@@ -83,9 +83,11 @@ app.post( '/updateNote/:note', function( req, res ) {
     });
 });
 
-app.listen(3000);
-app.use(function (req, res, next) {
-    res.status(404).send('Wybacz, nie mogliśmy odnaleźć tego, czego żądasz!')
+// Nasluchuj na port serwera
+app.listen( 3000 );
+// Uzyj funkcji middleware i wyswietl blad jesli endpoint sie nie zgadza
+app.use(function ( req, res, next ) {
+    res.status(404).send( 'Wybacz, nie mogliśmy odnaleźć tego, czego żądasz!' );
 });
 
 
