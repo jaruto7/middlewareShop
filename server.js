@@ -16,8 +16,13 @@ app.use( '/store', function( req, res, next ){
     next();
 });
 
+// Wywolaj metode GET i przejslij komunikat na serwer jesli endpoint sie zgadza
+app.get( '/', function ( req, res ) {
+    res.send('Hello world!');
+});
+
 // Wywolaj metode GET i przeslij informacje do serwera gdy endpoint zostanie spelniony
-app.get('/store', function ( req, res ) {
+app.get( '/store', function ( req, res ) {
     res.send( 'To jest sklep' );
 });
 
@@ -78,5 +83,9 @@ app.post( '/updateNote/:note', function( req, res ) {
     });
 });
 
-// Nasluchuj zmiany na port serwera
-app.listen( 3000 );
+app.listen(3000);
+app.use(function (req, res, next) {
+    res.status(404).send('Wybacz, nie mogliśmy odnaleźć tego, czego żądasz!')
+});
+
+
